@@ -1,34 +1,21 @@
 import React from 'react';
-import axios from 'axios';
-import UserCard from './UserCard';
+// import axios from 'axios';
+import './App.css';
+import Followers from './components/Followers';
+import User from './components/User';
 
-class App extends React.Component {
 
-  state = {
-    user:null
-  }
+function App() {
 
-  componentDidMount() {
-    axios.get('https://api.github.com/users/dominthebox')
-      .then(res => {
-        console.log(res.data)
-        this.setState({
-          user:res.data
-        })
-      })
-      .catch(err => {
-        console.log('Houston, we have a problem:', err)
-      })
-  }
-
-  render() {
-    return(
+  
+  return(
       <div className="App">
-        <h1>Hey are you out there?</h1>
-        <UserCard userDate={this.state.userDate}/>
+        <h1>GitHub User Card</h1>
+        <User />
+        <Followers />
       </div>
     )
-  }
+  
 }
 
 export default App
